@@ -6,5 +6,17 @@
 </head>
 <body>
     <p th:text="'Hello, ' + ${name} + '!'" />
+
+    <form action="/users/add">
+        First name:<br/>
+        <input type="text" name="firstname" /><br/>
+        Last name:<br/>
+        <input type="text" name="lastname" /><br/>
+        Last email:<br/>
+        <input type="text" name="email" /><br/>
+        Last age:<br/>
+        <input type="text" name="age" />
+        <input type="submit" value="Submit" />
+    </form>
 </body>
 </html>
