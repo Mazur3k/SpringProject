@@ -7,18 +7,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class HelloController {
+public class SignUpController {
 
-	@RequestMapping("/greeting")
-	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-			Model model) {
-		model.addAttribute("name", name);
+	@RequestMapping("/signup")
+	public String signUp() {
 
-
-        User user = new User();
-
-
-        return "greeting";
+        return "Signup";
 	}
 
 }

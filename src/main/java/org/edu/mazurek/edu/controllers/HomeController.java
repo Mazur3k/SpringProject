@@ -10,13 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class HomeController {
 
     @RequestMapping("/")
-    public String Home(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-                           Model model) {
-        model.addAttribute("name", name);
-
-
-        User user = new User();
-
+    public String Home() {
 
         return "Home";
     }

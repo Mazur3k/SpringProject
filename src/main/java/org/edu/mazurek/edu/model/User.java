@@ -6,12 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 @Entity
 public class User {
     @Id
@@ -21,5 +23,5 @@ public class User {
     private String firstname;
     private String lastname;
     private String email;
-    private Integer age;
+    private String birthdate;
 }

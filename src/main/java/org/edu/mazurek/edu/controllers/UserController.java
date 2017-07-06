@@ -1,6 +1,7 @@
 package org.edu.mazurek.edu.controllers;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.edu.mazurek.edu.model.User;
@@ -30,9 +31,9 @@ public class UserController {
     }
 
     @RequestMapping("add")
-    public String addUsers(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam Integer age) {
+    public String addUsers(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String birthdate) {
 
-        User user = new User(0l, firstname, lastname, email, age);
+        User user = new User(0l, firstname, lastname, email, birthdate);
         userRepository.save(user);
 
         return "User has been added: " + user;
