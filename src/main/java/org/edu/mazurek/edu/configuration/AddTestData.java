@@ -23,10 +23,10 @@ public class AddTestData {
     public void addTestData() {
 
         List<User> users = new ArrayList<>();
-        users.add(new User(0l, "Adam", "Mazurkiewicz", "adam.mazurkiewicz92@gmail.com", "09-07-1992"));
-        users.add(new User(0l, "Jan", "Kowalski", "jan.kowalski@gmail.com", "09-07-1993"));
-        users.add(new User(0l, "Stefan", "Niesiolowski", "stefan.niesiolowski@gmail.com", "09-07-1994"));
-        users.add(new User(0l, "Eugeniusz", "Smolarek", "eugeniusz.smolarek@gmail.com", "09-07-1995"));
+        users.add(new User(0l, "Adam", "Mazurkiewicz", "adam.mazurkiewicz92@gmail.com", "09-07-1992","123"));
+        users.add(new User(0l, "Jan", "Kowalski", "jan.kowalski@gmail.com", "09-07-1993","123"));
+        users.add(new User(0l, "Stefan", "Niesiolowski", "stefan.niesiolowski@gmail.com", "09-07-1994","123"));
+        users.add(new User(0l, "Eugeniusz", "Smolarek", "eugeniusz.smolarek@gmail.com", "09-07-1995","123"));
 
         userRepository.save(users);
 

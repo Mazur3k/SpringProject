@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 
-@Entity
+@Entity(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,4 +24,5 @@ public class User {
     private String lastname;
     private String email;
     private String birthdate;
+    private String password;
 }
