@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @RequestMapping("add")
-    public String addUsers(@RequestParam String firstname, @RequestParam String lastname, @RequestParam String email, @RequestParam String birthdate) {
+    public String addUsers(String firstname, String lastname, String email, String birthdate) {
 
         User user = new User(0l, firstname, lastname, email, birthdate);
         userRepository.save(user);

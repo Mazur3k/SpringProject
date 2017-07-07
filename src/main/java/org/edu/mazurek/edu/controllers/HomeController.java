@@ -15,4 +15,10 @@ public class HomeController {
         return "Home";
     }
 
+    @RequestMapping("/signup")
+    public String signUp() {
+
+        return "Signup";
+    }
+
 }
