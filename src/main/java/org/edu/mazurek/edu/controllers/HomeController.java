@@ -21,4 +21,11 @@ public class HomeController {
         return "Signup";
     }
 
+    @RequestMapping("/news")
+    public String news() {
+
+        return "News";
+    }
+
+
 }
