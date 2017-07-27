@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:with="lang=${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Page</title>
     <meta charset="utf-8" />
@@ -21,14 +21,14 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Start</a></li>
-                <li><a href="#">Aktualności</a></li>
-                <li><a href="#">Strefa studenta</a></li>
-                <li><a href="#">Strefa nauczyciela</a></li>
+                <li><a href="/" th:text="#{start}">Start</a></li>
+                <li class="active"><a href="/news" th:text="#{news}">Aktualności</a></li>
+                <li><a href="#" th:text="#{zone.student}">Strefa studenta</a></li>
+                <li><a href="#" th:text="#{zone.teacher}">Strefa nauczyciela</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="signup.html"><span class="glyphicon glyphicon-education"></span> Sign Up</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <li><a href="signup.html" th:text="#{sing.up}"><span class="glyphicon glyphicon-education"></span> Sign Up</a></li>
+                <li><a href="#" th:text="#{log.in}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
     </div>
@@ -37,7 +37,7 @@
 <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
-            <p><a href="#">Panel administratora</a></p>
+            <p><a href="#" th:text="#{admin.panel}">Panel administratora</a></p>
         </div>
         <div class="col-sm-8 text-left">
             <h2>Wyklad ekspercki</h2>
@@ -118,7 +118,7 @@
 </div>
 
 <footer class="container-fluid text-right">
-    <p>&copy; copyright 2017 all rights reserved  |  powered by Spring Boot</p>
+    <p>&copy;</p><p th:text="#{footer}">copyright 2017 all rights reserved  |  powered by Spring Boot</p>
 </footer>
 
 <script src="http://code.jquery.com/jquery.js"></script>
