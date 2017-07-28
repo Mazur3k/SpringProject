@@ -1,7 +1,7 @@
 spring.h2.console.enabled: true
 spring.datasource.url: "jdbc:h2:mem:testdb;MODE=PostgreSQL"
 security.basic.enabled: false
-spring:
-  messages:
-    basename: i18n/messages
-    encoding: UTF-8
+#spring:
+#  messages:
+#    basename: i18n/messages
+#    encoding: UTF-8
