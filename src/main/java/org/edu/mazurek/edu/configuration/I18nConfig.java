@@ -8,7 +8,6 @@ import org.springframework.context.MessageSource;
         import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
-@EnableWebMvc
 public class I18nConfig extends WebMvcConfigurerAdapter {
 
     @Bean
