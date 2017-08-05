@@ -1,16 +1,17 @@
 package org.edu.mazurek.edu.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
+import org.edu.mazurek.edu.form.AddUserForm;
 import org.edu.mazurek.edu.model.User;
 import org.edu.mazurek.edu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("users")
@@ -30,13 +31,34 @@ public class UserController {
         return "Hello Everyone!";
     }
 
+//    @RequestMapping("add")
+//    public String addUsers(@Valid AddUserForm addUserForm) {
+///*        if(bindingResult.hasErrors()){
+//            throw new BindingResultException();
+//        }*/
+//        User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
+//                addUserForm.getBirthdate(), addUserForm.getPassword());
+//
+//        userRepository.save(user);
+//
+//        return "User has been added: " + user;
+
+
+//    }
+
     @RequestMapping("add")
-    public String addUsers(String firstname, String lastname, String email, String birthdate, String password) {
+    public ModelAndView addUsers(@Valid AddUserForm addUserForm) {
+/*        if(bindingResult.hasErrors()){
+            throw new BindingResultException();
+        }*/
+        Map<String, String> map = new HashMap<>();
+        User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
+                addUserForm.getBirthdate(), addUserForm.getPassword());
 
-        User user = new User(0l, firstname, lastname, email, birthdate, password);
         userRepository.save(user);
+        map.put("success", "");
 
-        return "User has been added: " + user;
+        return new ModelAndView("Home", map);
     }
 
     @RequestMapping("get")
@@ -48,12 +70,12 @@ public class UserController {
 
 
     @RequestMapping("findByFirstName/{firstname}")
-    public Iterable<User> getByFirstName(@PathVariable String firstname){
+    public Iterable<User> getByFirstName(@PathVariable String firstname) {
         return userRepository.findByFirstnameIgnoreCase(firstname);
     }
 
     @RequestMapping("findByEmail/{email}")
-    public Iterable<User> getByEmail(@PathVariable String email){
+    public Iterable<User> getByEmail(@PathVariable String email) {
         return userRepository.findByEmailContainingIgnoreCase(email);
     }
 

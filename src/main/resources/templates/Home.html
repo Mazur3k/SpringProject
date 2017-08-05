@@ -2,10 +2,12 @@
 <html th:with="lang=${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Home Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </link>
 </head>
 <body>
 
@@ -27,9 +29,10 @@
                 <li><a href="#" th:text="#{zone.teacher}">Strefa nauczyciela</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="?lang=pl"><img src="/images/pl.png" alt="PL" /></a></li>
-                <li><a href="?lang=en"><img src="/images/en.png" alt="EN" /></a></li>
-                <li><a href="signup.html" th:text="#{sing.up}"><span class="glyphicon glyphicon-education"></span> Sign Up</a></li>
+                <li><a href="?lang=pl"><img src="/images/pl.png" alt="PL"/></a></li>
+                <li><a href="?lang=en"><img src="/images/en.png" alt="EN"/></a></li>
+                <li><a href="signup.html" th:text="#{sing.up}"><span class="glyphicon glyphicon-education"></span> Sign
+                    Up</a></li>
                 <li><a href="#" th:text="#{log.in}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
             </ul>
         </div>
@@ -38,27 +41,45 @@
 
 <div class="container-fluid text-center">
     <div class="row content">
+
+        <div th:if="${error}">
+            <div class="alert alert-danger">
+                <span th:text="#{error_msg}"></span>
+            </div>
+        </div>
+
+        <div th:if="${success}">
+            <div class="alert alert-success">
+                <span th:text="#{success_msg}"></span>
+            </div>
+        </div>
+
         <div class="col-sm-2 sidenav">
             <p><a href="#" th:text="#{admin.panel}">Panel administratora</a></p>
         </div>
         <div class="col-sm-8 text-left">
             <h1 th:text="#{welcome}">Witaj!</h1>
-            <p th:text="#{welcome.message}">Znajdujesz się na stronie elektronicznego dziennika ocen, dzięki czemu będziesz mógł w łatwy i przystępny sposób sprawdzać oceny własnych zaliczeń. Strona nie została dofinansowana ze środków unijnych.</p>
-            <hr />
+
+            <p th:text="#{welcome.message}">Znajdujesz się na stronie elektronicznego dziennika ocen, dzięki czemu
+                będziesz mógł w łatwy i przystępny sposób sprawdzać oceny własnych zaliczeń. Strona nie została
+                dofinansowana ze środków unijnych.</p>
+            <hr/>
         </div>
         <!--<div class="col-sm-2 sidenav">-->
-            <!--<div class="well">-->
-                <!--<p>ADS</p>-->
-            <!--</div>-->
-            <!--<div class="well">-->
-                <!--<p>ADS</p>-->
-            <!--</div>-->
+        <!--<div class="well">-->
+        <!--<p>ADS</p>-->
+        <!--</div>-->
+        <!--<div class="well">-->
+        <!--<p>ADS</p>-->
+        <!--</div>-->
         <!--</div>-->
     </div>
 </div>
 
 <footer class="container-fluid text-right">
-    <p>&copy;</p><p th:text="#{footer}">copyright 2017 all rights reserved  |  powered by Spring Boot</p>
+    <p>&copy;</p>
+
+    <p th:text="#{footer}">copyright 2017 all rights reserved | powered by Spring Boot</p>
 </footer>
 
 <script src="http://code.jquery.com/jquery.js"></script>
