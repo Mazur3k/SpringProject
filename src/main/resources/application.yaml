@@ -4,3 +4,8 @@ security.basic.enabled: false
 spring:
   messages:
     encoding: UTF-8
+
+
+recaptcha.url: https://www.google.com/recaptcha/api/siteverify
+google.recaptcha.key.site: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+google.recaptcha.key.secret: 6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe

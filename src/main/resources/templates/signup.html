@@ -7,6 +7,8 @@
     <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen"> </link>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> </link>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body>
 
@@ -104,6 +106,18 @@
                             <label class="col-sm-3 control-label" th:text="#{password}"><font color="red"><b>*</b></font> Password</label>
                             <div class="col-sm-6">
                                 <input type="password" class="form-control" name="password" required="required" />
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-sm-3">
+                                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
                             </div>
                         </div>
                     </div>

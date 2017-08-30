@@ -48,9 +48,7 @@ public class UserController {
 
     @RequestMapping("add")
     public ModelAndView addUsers(@Valid AddUserForm addUserForm) {
-/*        if(bindingResult.hasErrors()){
-            throw new BindingResultException();
-        }*/
+
         Map<String, String> map = new HashMap<>();
         User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
                 addUserForm.getBirthdate(), addUserForm.getPassword());
