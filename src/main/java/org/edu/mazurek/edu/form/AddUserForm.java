@@ -34,4 +34,7 @@ public class AddUserForm {
 
     @NotEmpty
     private String password;
+
+    @NotEmpty
+    private String recaptchaResponse;
 }
