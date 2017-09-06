@@ -40,38 +40,12 @@
     </div>
 </nav>
 
-<form action="users/add" method="post">
+<form action="" method="post">
 
     <div class="container">
-        <h2 th:text="#{registration}">Registration</h2>
+        <h2 th:text="#{login}">Login</h2>
         <table class="table table-condensed">
             <thead>
-            <tr>
-                <td>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" th:text="#{first.name}"><font color="red"><b>*</b></font> First Name</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="firstname" required="required" />
-                                <!--<p th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error message</p>-->
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" th:text="#{last.name}"><font color="red"><b>*</b></font> Last Name</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" name="lastname" required="required" />
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
 
             <tr>
                 <td>
@@ -80,19 +54,6 @@
                             <label class="col-sm-3 control-label" th:text="#{email.adress}"><font color="red"><b>*</b></font> Email</label>
                             <div class="col-sm-6">
                                 <input type="email" class="form-control" name="email" required="required" />
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label" th:text="#{birth.date}"><font color="red"><b>*</b></font> Birth Date</label>
-                            <div class="col-sm-6">
-                                <input type="date" pattern="\d{1,2}-\d{1,2}-\d{4}" class="form-control" th:placeholder="#{date.placeholder}" name="birthdate" required="required"/>
                             </div>
                         </div>
                     </div>
@@ -117,19 +78,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-sm-3">
-                                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <button type="submit" class="btn btn-default row" th:text="#{submit}">Submit</button>
+                                <button type="submit" class="btn btn-default row" th:text="#{login_button}">Login</button>
                             </div>
                         </div>
                     </div>

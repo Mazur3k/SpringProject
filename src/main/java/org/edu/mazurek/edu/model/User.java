@@ -4,21 +4,19 @@ import lombok.*;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-
+@Access(AccessType.FIELD)
 @Entity(name = "users")
 public class User {
     @Id
@@ -29,4 +27,7 @@ public class User {
     private String email;
     private LocalDate birthdate;
     private String password;
+
+    @OneToMany
+    List<UserCourse> userCourseList;
 }

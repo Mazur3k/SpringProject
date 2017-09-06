@@ -32,5 +32,17 @@ public class HomeController {
         return "News";
     }
 
+    @RequestMapping("/login")
+    public String login() {
+
+        return "login";
+    }
+
+    @RequestMapping("/panel")
+    public String panel() {
+
+        return "panel";
+    }
+
 
 }

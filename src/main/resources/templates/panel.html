@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html th:with="lang=${#locale.language}" th:lang="${lang}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="webjars/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </link>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/" th:text="#{start}">Start</a></li>
+                <li><a href="/news" th:text="#{news}">Aktualności</a></li>
+                <li><a href="#" th:text="#{zone.student}">Strefa studenta</a></li>
+                <li><a href="#" th:text="#{zone.teacher}">Strefa nauczyciela</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="?lang=pl"><img src="/images/pl.png" alt="PL"/></a></li>
+                <li><a href="?lang=en"><img src="/images/en.png" alt="EN"/></a></li>
+                <li><a href="signup.html" th:text="#{sing.up}"><span class="glyphicon glyphicon-education"></span> Sign
+                    Up</a></li>
+                <li><a href="login.html" th:text="#{log.in}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+
+        <!--<div th:if="${error}">-->
+            <!--<div class="alert alert-danger">-->
+                <!--<span th:text="#{error_msg}"></span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div th:if="${success}">-->
+            <!--<div class="alert alert-success">-->
+                <!--<span th:text="#{success_msg}"></span>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <div class="col-sm-2 sidenav">
+
+        </div>
+        <div class="col-lg-8 text-left">
+            <h1 th:text="#{admin.panel}">Administration Panel</h1>
+
+            <form action="/users/show_users" method="post">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <button type="submit" class="btn btn-default row btn-block" th:text="#{show_users}">Show users</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <form action="" method="post">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-sm-8">
+                        <button type="submit" class="btn btn-default row btn-block" th:text="#{show_courses}">Show courses</button>
+                    </div>
+                </div>
+            </div>
+            </form>
+
+            <form action="" method="post">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-sm-8">
+                            <button type="submit" class="btn btn-default row btn-block" th:text="#{add.courses}">Add Course</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div  class="container" th:if="${showUsers}">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th th:text="#{first.name}">First Name</th>
+                    <th th:text="#{last.name}">Last Name</th>
+                    <th th:text="#{email.adress}">Email</th>
+                    <th th:text="#{birth.date}">Birthdate</th>
+                    <th th:text="#{password}">Password</th>
+                    <th th:text="#{delete}">Delete</th>
+                    <th th:text="#{edit}">Edit</th>
+                </tr>
+                </thead>
+
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.firstname}"></td>
+                    <td th:text="${user.lastname}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.birthdate}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td><a th:href="@{delete/} + ${user.id}">Delete</a></td>
+                    <td><a href="#">Edit</a></td>
+                </tr>
+
+
+
+            </table>
+        </div>
+        <!--<div class="col-sm-2 sidenav">-->
+        <!--<div class="well">-->
+        <!--<p>ADS</p>-->
+        <!--</div>-->
+        <!--<div class="well">-->
+        <!--<p>ADS</p>-->
+        <!--</div>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<footer class="container-fluid text-right">
+
+</footer>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="webjars/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

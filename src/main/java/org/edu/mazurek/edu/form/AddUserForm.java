@@ -1,6 +1,7 @@
 package org.edu.mazurek.edu.form;
 
 import lombok.*;
+import org.edu.mazurek.edu.model.UserCourse;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -9,6 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,7 +37,10 @@ public class AddUserForm {
 
     @NotEmpty
     private String password;
-
-    @NotEmpty
+    
+//    @NotEmpty
     private String recaptchaResponse;
+
+    private List<UserCourse> userCourseList = new ArrayList<UserCourse>();
+
 }

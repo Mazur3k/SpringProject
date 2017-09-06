@@ -26,7 +26,7 @@ public class RecaptchaServiceImpl implements RecaptchaService {
     @Value("${recaptcha.url}")
     private String recaptchaUrl;
 
-    @Value("${recaptcha.secret-key}")
+    @Value("${google.recaptcha.key.secret}")
     private String recaptchaSecretKey;
 
     @Autowired

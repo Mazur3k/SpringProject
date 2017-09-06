@@ -1,12 +1,15 @@
 package org.edu.mazurek.edu.configuration;
 
+import org.apache.http.client.HttpClient;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
-import sun.net.www.http.HttpClient;
+//import sun.net.www.http.HttpClient;
 
 @Configuration
 public class RestTemplateConfig {
@@ -23,7 +26,7 @@ public class RestTemplateConfig {
     }
 
     @Bean
-    public HttpClient httpClient() {
+    public CloseableHttpClient httpClient() {
         return HttpClientBuilder.create().build();
     }
 
