@@ -5,10 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Setter
 @Getter
@@ -16,7 +14,13 @@ import javax.persistence.EmbeddedId;
 @NoArgsConstructor
 @Embeddable
 @Access(AccessType.FIELD)
-public class UserCourseID {
+public class UserCourseID  implements Serializable{
+
+    @ManyToOne
+    @JoinColumn
     User user;
+
+    @ManyToOne
+    @JoinColumn
     Course course;
 }
