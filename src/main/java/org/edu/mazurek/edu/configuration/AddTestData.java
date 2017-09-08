@@ -46,10 +46,10 @@ public class AddTestData {
 
 
 
-        Course math = new Course(01l, "Math", new ArrayList<>());
-        Course biology = new Course(01l, "Biology", new ArrayList<>());
-        Course polish = new Course(01l, "Polish", new ArrayList<>());
-        Course it = new Course(01l, "IT", new ArrayList<>());
+        Course math = new Course(0l, "Math", new ArrayList<>());
+        Course biology = new Course(0l, "Biology", new ArrayList<>());
+        Course polish = new Course(0l, "Polish", new ArrayList<>());
+        Course it = new Course(0l, "IT", new ArrayList<>());
 
         math = courseRepository.save(math);
         biology = courseRepository.save(biology);

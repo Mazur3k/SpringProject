@@ -5,6 +5,7 @@ import org.edu.mazurek.edu.model.User;
 import org.edu.mazurek.edu.model.UserCourse;
 import org.edu.mazurek.edu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -86,11 +87,40 @@ public class UserController {
         return userRepository.findByEmailContainingIgnoreCase(email);
     }
 
-    @RequestMapping(method= RequestMethod.GET, path="delete/{id}")
-    public String deleteUser(@PathVariable("id") Long userId)
+    @RequestMapping(method = RequestMethod.GET, path="delete/{id}")
+    public ModelAndView deleteUser(@PathVariable("id") Long userId)
     {
+        Map<String,String> map = new HashMap<>();
         userRepository.delete(userId);
-        return "panel";
+        map.put("successDelete","");
+        return new ModelAndView("panel",map);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="update_form/{id}")
+    public ModelAndView updateForm(@PathVariable("id") Long id, @ModelAttribute("user") User user)
+    {
+        Map<String, Object> map = new HashMap<>();
+        User existingUser = userRepository.findOne(id);
+        map.put("showForm","");
+        map.put("user",existingUser);
+        return new ModelAndView("panel", map);
+
+    }
+
+    @RequestMapping(method = RequestMethod.POST, path="update/{id}")
+    public ModelAndView updateUser(@PathVariable("id") Long id, @Valid AddUserForm addUserForm)
+    {
+        Map<String, String> map = new HashMap<>();
+        User existingUser = userRepository.findOne(id);
+        existingUser.setFirstname(addUserForm.getFirstname());
+        existingUser.setLastname(addUserForm.getLastname());
+        existingUser.setEmail(addUserForm.getEmail());
+        existingUser.setBirthdate(addUserForm.getBirthdate());
+        existingUser.setPassword(addUserForm.getPassword());
+        userRepository.save(existingUser);
+        map.put("userUpdated","");
+        return new ModelAndView("panel", map);
+
     }
 
 }
