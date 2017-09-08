@@ -4,6 +4,7 @@ import org.edu.mazurek.edu.form.AddCourseForm;
 import org.edu.mazurek.edu.model.Course;
 import org.edu.mazurek.edu.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -42,7 +43,7 @@ public class CourseController {
     }
 
     @RequestMapping("show_courses")
-    public ModelAndView showCourses(@ModelAttribute("course") Course course)
+    public ModelAndView showCourses(/*@ModelAttribute("course") Course course*/)
     {
         Map<String, Object> map = new HashMap<>();
         map.put("showCourses","");
@@ -57,6 +58,25 @@ public class CourseController {
         courseRepository.delete(id);
         map.put("courseDeleted","");
         return new ModelAndView("panel",map);
+    }
 
+    @RequestMapping(method = RequestMethod.GET, path="updateCourse_form/{id}")
+    public ModelAndView updateCourseForm(@PathVariable("id") Long id)
+    {
+        Map<String, Object> map = new HashMap<>();
+        Course existCourse = courseRepository.findOne(id);
+        map.put("updateCourseForm","");
+        map.put("course",existCourse);
+        return new ModelAndView("panel",map);
+    }
+
+    @RequestMapping("update_course/{id}")
+    public ModelAndView updateCourse(@PathVariable("id") Long id, @Valid AddCourseForm addCourseForm)
+    {
+        Map<String, Object> map = new HashMap<>();
+        Course existCourse = courseRepository.findOne(id);
+        existCourse.setName(addCourseForm.getName());
+        courseRepository.save(existCourse);
+        return new ModelAndView("panel", map);
     }
 }

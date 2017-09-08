@@ -97,7 +97,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path="update_form/{id}")
-    public ModelAndView updateForm(@PathVariable("id") Long id, @ModelAttribute("user") User user)
+    public ModelAndView updateForm(@PathVariable("id") Long id/*, @ModelAttribute("user") User user*/)
     {
         Map<String, Object> map = new HashMap<>();
         User existingUser = userRepository.findOne(id);
