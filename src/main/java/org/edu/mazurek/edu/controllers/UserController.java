@@ -2,9 +2,14 @@ package org.edu.mazurek.edu.controllers;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.edu.mazurek.edu.form.AddUserForm;
+import org.edu.mazurek.edu.form.AddUserToCourseForm;
+import org.edu.mazurek.edu.model.Course;
 import org.edu.mazurek.edu.model.User;
+import org.edu.mazurek.edu.model.UserCourse;
+import org.edu.mazurek.edu.model.UserCourseID;
 import org.edu.mazurek.edu.recaptcha.CaptchaService;
 import org.edu.mazurek.edu.repository.CourseRepository;
+import org.edu.mazurek.edu.repository.UserCourseRepository;
 import org.edu.mazurek.edu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +29,9 @@ public class UserController {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private UserCourseRepository userCourseRepository;
 
     @Autowired
     private CaptchaService captchaService;
@@ -144,6 +152,17 @@ public class UserController {
         return new ModelAndView("studentzone", map);
     }
 
+    @RequestMapping("addStudentToCourse")
+    public ModelAndView addStudentToCourseReally(AddUserToCourseForm addUserToCourseForm)
+    {
+        Map<String, String> map = new HashMap<>();
+        User user = userRepository.findOne(addUserToCourseForm.getUserID());
+        Course course = courseRepository.findOne(addUserToCourseForm.getCourseID());
+        UserCourse userCourse = new UserCourse(new UserCourseID(user, course));
+        userCourseRepository.save(userCourse);
+        map.put("successAdd", "");
+        return new ModelAndView("studentzone", map);
+    }
 }
 
 

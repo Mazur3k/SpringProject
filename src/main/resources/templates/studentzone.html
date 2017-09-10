@@ -51,16 +51,16 @@
                 </div>
             </div>
         </form>
-        <form action="#" method="get" th:if="${showSelectBars}">
+        <form action="/users/addStudentToCourse" method="get" th:if="${showSelectBars}">
             <div class="col-lg-8 text-left">
                 <div class="form-group">
                     <label for="sel1" th:text="#{choose.student}">choose.student</label>
-                    <select class="form-control" id="sel1">
-                        <option th:each="student : ${students}" th:value="${student.firstname}+' '+${student.lastname}" th:text="${student.firstname}+' '+${student.lastname}">1</option>
+                    <select class="form-control" id="sel1" name="userID">
+                        <option th:each="student : ${students}" th:value="${student.id}" th:text="${student.firstname}+' '+${student.lastname}">1</option>
                     </select>
                     <label for="sel1" th:text="#{choose.course}">choose.course</label>
-                    <select class="form-control" id="sel2">
-                        <option th:each="course : ${courses}" th:value="${course.name}" th:text="${course.name}">1</option>
+                    <select class="form-control" id="sel2" name="courseID">
+                        <option th:each="course : ${courses}" th:value="${course.id}" th:text="${course.name}">1</option>
                     </select>
                     <div class="col-sm-3">
                         <button type="submit" class="btn btn-default row btn-block" th:text="#{add.button}">Add</button>
