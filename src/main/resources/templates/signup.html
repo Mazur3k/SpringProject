@@ -40,6 +40,11 @@
     </div>
 </nav>
 
+<div class="container" th:if="errorEmail">
+    <div class="alert alert-danger">
+        <h3 th:text="#{email.in.use}">Email taken</h3>
+    </div>
+</div>
 <form action="/users/add" method="post">
 
     <div class="container">
@@ -114,13 +119,16 @@
 
             <tr>
                 <td>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="col-sm-3">
-                                <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <!--<div class="col-md-6">-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-sm-3">-->
+                                <!--<div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="g-recaptcha col-sm-5"
+                         th:attr="data-sitekey=${@captchaSettings.getSite()}"></div>
+                        <span id="captchaError"></span>
                 </td>
             </tr>
 

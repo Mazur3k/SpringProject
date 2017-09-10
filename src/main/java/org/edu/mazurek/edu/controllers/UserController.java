@@ -1,5 +1,6 @@
 package org.edu.mazurek.edu.controllers;
 
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.edu.mazurek.edu.form.AddUserForm;
 import org.edu.mazurek.edu.model.User;
 import org.edu.mazurek.edu.model.UserCourse;
@@ -23,6 +24,9 @@ public class UserController {
     private final UserRepository userRepository;
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private ICaptchaService captchaService;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -51,17 +55,26 @@ public class UserController {
 //    }
 
     @RequestMapping("add")
-    public ModelAndView addUsers(@Valid AddUserForm addUserForm) {
+    public ModelAndView addUsers(@Valid AddUserForm addUserForm, HttpServletRequest request) {
 
         Map<String, String> map = new HashMap<>();
-        User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
-                addUserForm.getBirthdate(), addUserForm.getPassword(),addUserForm.getUserCourseList());
+        if (userRepository.findByEmailContainingIgnoreCase(addUserForm.getEmail()).isEmpty()) {
+            User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
+                    addUserForm.getBirthdate(), addUserForm.getPassword(), addUserForm.getUserCourseList());
 
-        userRepository.save(user);
-        map.put("success", "");
+            userRepository.save(user);
+            map.put("success", "");
 
-        return new ModelAndView("Home", map);
+            String response = request.getParameter("g-recaptcha-response");
+            captchaService.processResponse(response);
+
+            return new ModelAndView("Home", map);
+        } else {
+            map.put("errorEmail", "");
+            return new ModelAndView("signup", map);
+        }
     }
+
 
     @RequestMapping("get")
     public Iterable<User> getUsers() {
