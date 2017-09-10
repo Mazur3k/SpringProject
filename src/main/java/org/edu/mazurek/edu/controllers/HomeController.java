@@ -44,5 +44,17 @@ public class HomeController {
         return "panel";
     }
 
+    @RequestMapping("/student")
+    public String student() {
+
+        return "studentzone";
+    }
+
+    @RequestMapping("/teacher")
+    public String teacher() {
+
+        return "teacherzone";
+    }
+
 
 }

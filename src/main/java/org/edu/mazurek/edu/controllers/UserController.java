@@ -3,6 +3,7 @@ package org.edu.mazurek.edu.controllers;
 import org.edu.mazurek.edu.form.AddUserForm;
 import org.edu.mazurek.edu.model.User;
 import org.edu.mazurek.edu.model.UserCourse;
+import org.edu.mazurek.edu.repository.CourseRepository;
 import org.edu.mazurek.edu.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -20,6 +21,8 @@ public class UserController {
 
 
     private final UserRepository userRepository;
+    @Autowired
+    private CourseRepository courseRepository;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -120,7 +123,16 @@ public class UserController {
         userRepository.save(existingUser);
         map.put("userUpdated","");
         return new ModelAndView("panel", map);
+    }
 
+    @RequestMapping("addStudentCourse")
+    public ModelAndView addStudentToCourse()
+    {
+        Map<String,Object> map = new HashMap<>();
+        map.put("showSelectBars","");
+        map.put("students",userRepository.findAll());
+        map.put("courses",courseRepository.findAll());
+        return new ModelAndView("studentzone", map);
     }
 
 }

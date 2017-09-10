@@ -25,8 +25,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/" th:text="#{start}">Start</a></li>
                 <li><a href="/news" th:text="#{news}">Aktualności</a></li>
-                <li><a href="#" th:text="#{zone.student}">Strefa studenta</a></li>
-                <li><a href="#" th:text="#{zone.teacher}">Strefa nauczyciela</a></li>
+                <li><a href="/student" th:text="#{zone.student}">Strefa studenta</a></li>
+                <li><a href="/teacher" th:text="#{zone.teacher}">Strefa nauczyciela</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="?lang=pl"><img src="/images/pl.png" alt="PL"/></a></li>
@@ -89,8 +89,6 @@
                     </div>
                 </div>
             </form>
-
-
         </div>
 
         <div th:if="${successDelete}">
