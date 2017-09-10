@@ -38,9 +38,6 @@ public class AddUserForm {
     @NotEmpty
     private String password;
 
-//    @NotEmpty
-    private String recaptchaResponse;
-
     private List<UserCourse> userCourseList = new ArrayList<UserCourse>();
 
 }
