@@ -1,6 +1,7 @@
 package org.edu.mazurek.edu.form;
 
 import lombok.*;
+import org.edu.mazurek.edu.model.Role;
 import org.edu.mazurek.edu.model.UserCourse;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -39,5 +40,6 @@ public class AddUserForm {
     private String password;
 
     private List<UserCourse> userCourseList = new ArrayList<UserCourse>();
+    private Role role;
 
 }

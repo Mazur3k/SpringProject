@@ -1,6 +1,7 @@
 package org.edu.mazurek.edu.model;
 
 import lombok.*;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Service
 public class Course {
 
     @Id
@@ -21,6 +23,5 @@ public class Course {
 
     @OneToMany
     List<UserCourse> userCourseList;
-
 
 }

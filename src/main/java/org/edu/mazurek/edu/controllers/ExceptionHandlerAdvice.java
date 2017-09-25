@@ -27,7 +27,7 @@ public class ExceptionHandlerAdvice {
     public ModelAndView genericException(Exception exception) {
         log.info("Exception", exception);
         Map<String, String> props = new HashMap<String, String>();
-        props.put("error", "Zjebales generycznie");
+        props.put("error", "Blad generyczny");
         return new ModelAndView("Home", props);
     }
 

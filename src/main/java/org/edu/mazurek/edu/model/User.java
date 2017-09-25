@@ -1,8 +1,9 @@
 package org.edu.mazurek.edu.model;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Email;
+
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,15 +19,23 @@ import java.util.List;
 @ToString
 @Access(AccessType.FIELD)
 @Entity(name = "users")
+@Service
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String firstname;
     private String lastname;
-    private String email;
+
+
     private LocalDate birthdate;
     private String password;
+    private String email;
+
+    @Embedded
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name="roles_id")
+    private Role role;
 
     @OneToMany
     List<UserCourse> userCourseList;

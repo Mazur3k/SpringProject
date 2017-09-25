@@ -50,11 +50,11 @@ public class HomeController {
         return "studentzone";
     }
 
-    @RequestMapping("/teacher")
-    public String teacher() {
-
-        return "teacherzone";
-    }
+//    @RequestMapping("/teacher")
+//    public String teacher() {
+//
+//        return "teacherzone";
+//    }
 
 
 }

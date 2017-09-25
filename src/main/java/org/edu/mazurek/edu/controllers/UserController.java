@@ -1,6 +1,7 @@
 package org.edu.mazurek.edu.controllers;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.edu.mazurek.edu.form.AddCourseForm;
 import org.edu.mazurek.edu.form.AddUserForm;
 import org.edu.mazurek.edu.form.AddUserToCourseForm;
 import org.edu.mazurek.edu.model.Course;
@@ -68,9 +69,9 @@ public class UserController {
 
         if (isCaptchaCorrent) {
             Map<String, String> map = new HashMap<>();
-            if (userRepository.findByEmailContainingIgnoreCase(addUserForm.getEmail()).isEmpty()) {
-                User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getEmail(),
-                        addUserForm.getBirthdate(), addUserForm.getPassword(), addUserForm.getUserCourseList());
+            if (userRepository.findByEmailContainingIgnoreCase(addUserForm.getEmail()) == null) {
+                User user = new User(0l, addUserForm.getFirstname(), addUserForm.getLastname(), addUserForm.getBirthdate(),
+                        addUserForm.getPassword(), addUserForm.getEmail(), addUserForm.getRole(), addUserForm.getUserCourseList());
                 userRepository.save(user);
                 return new ModelAndView("Home", map);
             } else {
@@ -105,7 +106,7 @@ public class UserController {
     }
 
     @RequestMapping("findByEmail/{email}")
-    public Iterable<User> getByEmail(@PathVariable String email) {
+    public User getByEmail(@PathVariable String email) {
         return userRepository.findByEmailContainingIgnoreCase(email);
     }
 
@@ -153,8 +154,7 @@ public class UserController {
     }
 
     @RequestMapping("addStudentToCourse")
-    public ModelAndView addStudentToCourseReally(AddUserToCourseForm addUserToCourseForm)
-    {
+    public ModelAndView addStudentToCourseReally(AddUserToCourseForm addUserToCourseForm) {
         Map<String, String> map = new HashMap<>();
         User user = userRepository.findOne(addUserToCourseForm.getUserID());
         Course course = courseRepository.findOne(addUserToCourseForm.getCourseID());
@@ -163,6 +163,7 @@ public class UserController {
         map.put("successAdd", "");
         return new ModelAndView("studentzone", map);
     }
+
 }
 
 
